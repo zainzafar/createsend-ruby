@@ -179,6 +179,14 @@ module CreateSend
         :ScrubActiveWithSuppList => scrub_active_with_supp_list }.to_json }
       cs_put "/lists/#{list_id}.json", options
     end
+    
+    def update_confirmed_opt_in(confirmed_opt_in)
+      options = { :body => {
+        :Title => details.Title,
+        :ConfirmedOptIn => confirmed_opt_in,
+      }.to_json }
+      cs_put "/lists/#{list_id}.json", options
+    end
 
     # Gets the webhooks for this list.
     def webhooks
